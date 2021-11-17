@@ -72,25 +72,16 @@ class DogCardAdapter(
     override fun getItemCount(): Int = dogs.size
 
     override fun onBindViewHolder(holder: DogCardViewHolder, position: Int) {
-        val item = dogs[position]
-        println(item.age)
-//
-        holder.dogImage.setImageResource(item.imageResourceId)
-        holder.dogName.text = context?.resources?.getString(item.name)
-        holder.dogAge.text = context?.resources?.getString(item.age)
-        holder.dogHobbies.text = context?.resources?.getString(item.hobbies)
-        // TODO: Get the data at the current position
-        // TODO: Set the image resource for the current dog
-        // TODO: Set the text for the current dog's name
-        // TODO: Set the text for the current dog's age
+        val dog = dogs[position]
+        println(dog.age)
+        println(dog.name)
+        println(dog.hobbies)
         val resources = context?.resources
-        // TODO: Set the text for the current dog's hobbies by passing the hobbies to the
-        //  R.string.dog_hobbies string constant.
-        //  Passing an argument to the string resource looks like:
-        //  resources?.getString(R.string.dog_hobbies, dog.hobbies)
-    }
-}
 
-private fun Resources?.getString(name: String): String? {
-    return name
+        holder.dogImage.setImageResource(dog.imageResourceId)
+        holder.dogName.text = resources?.getString(R.string.dog_name,dog.name)
+        holder.dogAge.text = resources?.getString(R.string.dog_age, dog.age)
+        holder.dogHobbies.text = resources?.getString(R.string.dog_hobbies, dog.hobbies)
+
+    }
 }
